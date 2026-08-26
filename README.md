@@ -120,3 +120,21 @@ Cuando la versión en `*.vercel.app` esté aprobada:
 - Sin banner de cookies: el sitio ya no carga analítica ni cookies de terceros.
   Si añades Google Analytics o Meta Pixel, habrá que volver a poner el aviso.
 - Botón flotante de WhatsApp en todas las páginas.
+
+## Nivel enterprise (actualización)
+
+- **Animaciones**: aparición al hacer scroll (reveal), header que se encoge, contadores,
+  botón "volver arriba", lightbox en la galería, acordeón en FAQ. Respeta
+  `prefers-reduced-motion`. Con un guard `.js`: si el JS no carga, todo el contenido
+  se ve igual (no queda invisible).
+- **Secciones nuevas en el inicio**: banda de credibilidad, "Nuestra historia",
+  galería con lightbox, "Eventos & catering", FAQ y reseñas.
+- **Reseñas**: la sección está lista para pegar reseñas REALES de clientes
+  (hay una plantilla en un comentario dentro de `index.html`). No se incluyeron
+  reseñas inventadas.
+- **SEO**: datos estructurados ampliados (Restaurant + FAQPage), OG image
+  (`assets/img/og-farah.jpg`), favicon propio, `preload` del hero, `width/height`
+  en imágenes, `twitter:card`.
+- **Analítica**: se incluyó el script de **Vercel Web Analytics** (sin cookies).
+  Para que empiece a medir, actívalo en el panel de Vercel: proyecto → pestaña
+  **Analytics** → Enable. No necesita aviso de cookies.

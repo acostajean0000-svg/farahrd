@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es-DO">
 <head>
+<script>document.documentElement.className+=' js';</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Comida típica dominicana en Santo Domingo | Farah Restaurant</title>
@@ -12,7 +13,11 @@
 <meta property="og:title" content="Comida típica dominicana en Santo Domingo | Farah">
 <meta property="og:description" content="Sancocho, mofongo, churrasco y más. Cocina criolla dominicana en Farah.">
 <meta property="og:url" content="https://farahrd.com/comida-tipica-dominicana">
-<link rel="icon" href="/assets/img/favicon.png">
+<meta property="og:image" content="https://farahrd.com/assets/img/og-farah.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://farahrd.com/assets/img/og-farah.jpg">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -53,13 +58,13 @@
 
 <section class="section">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <p class="section-head__eyebrow">Nuestros clásicos</p>
       <h2>Lo típico, bien hecho</h2>
       <p>Estos son los platos por los que nos buscan. La carta completa está en el menú de cada local.</p>
     </div>
 
-    <div class="dish-grid">
+    <div class="dish-grid reveal-group">
       <article class="dish">
         <div class="dish__media"><img src="/assets/img/comida-tipica.webp" alt="Sancocho dominicano en Farah, Santo Domingo" loading="lazy"></div>
         <div class="dish__body">
@@ -97,7 +102,7 @@
 
 <section class="section section--cream2">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <p class="section-head__eyebrow">Raíces dominicanas</p>
       <h2>Una carta dedicada a lo nuestro</h2>
       <p>En San Isidro tenemos una carta completa de <strong>Raíces Dominicanas</strong>, con los platos criollos de siempre. En Plaza Duarte encuentras la misma cocina típica dentro del menú general y del brunch.</p>
@@ -170,5 +175,7 @@
 
 <script src="/assets/js/main.js" defer></script>
 <script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+<button class="to-top" aria-label="Volver arriba"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg></button>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
