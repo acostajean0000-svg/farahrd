@@ -190,8 +190,11 @@ cuando cambie el calendario del mes, se editan los bloques `.week__row`.
 - **Menú de almuerzo**: `.menu-item` en `#almuerzo` (mismo formato que las páginas
   de menú).
 - **Happy hour / karaoke**: listas en `.drink-cols` y los precios en `.promo-price`.
-- **Flyers**: `assets/img/oferta-*.webp`, en la galería con lightbox de `#promos`.
-  Al cambiar la promo del mes, se reemplaza el `.webp` con el mismo nombre.
+- **Flyers**: `assets/promos/oferta-*.webp`, en la galería con lightbox de
+  `#promos`. Al cambiar la promo del mes, se reemplaza el `.webp` con el mismo
+  nombre. Van en `assets/promos/` a propósito: esa carpeta tiene caché de 1 hora
+  en `vercel.json`, mientras que `assets/img/` está cacheada un año. Si pones un
+  flyer nuevo dentro de `assets/img/`, los visitantes seguirán viendo el viejo.
 
 Ojo con tres datos que vienen de los flyers:
 
