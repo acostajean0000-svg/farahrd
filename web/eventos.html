@@ -42,10 +42,10 @@
       <a href="/eventos" aria-current="page">Eventos</a>
       <a href="/restaurante-santo-domingo">Ubicaciones</a>
       <a href="/comida-tipica-dominicana">Comida típica</a>
-      <a class="btn btn--gold btn--sm" href="#cotizar">Cotizar</a>
+      <a class="btn btn--gold btn--sm" href="#consulta">Cotizar</a>
     </nav>
     <div class="header-cta">
-      <a class="btn btn--gold btn--sm" href="#cotizar">Cotizar</a>
+      <a class="btn btn--gold btn--sm" href="#consulta">Cotizar</a>
     </div>
   </div>
 </header>
@@ -59,7 +59,7 @@
     <p>Alquiler de salones, catering y decoración en un solo lugar. Cumpleaños, eventos corporativos, bodas y celebraciones especiales en San Isidro, Santo Domingo Este.</p>
     <div class="hero__actions" style="margin-top:1.8rem">
       <a class="btn btn--gold" href="#salones">Ver los salones</a>
-      <a class="btn btn--wa" href="https://wa.me/18098567886?text=Hola%2C%20quiero%20cotizar%20un%20evento%20en%20Farah" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+      <a class="btn btn--wa" href="#consulta">Consultar con un agente</a>
     </div>
     <nav aria-label="Migas de pan" style="margin-top:1.6rem;font-size:.8rem;color:rgba(250,246,239,.65)">
       <a href="/" style="color:inherit">Inicio</a> › <span style="color:var(--gold)">Eventos</span>
@@ -124,10 +124,83 @@
     </div>
 
     <div style="text-align:center;margin-top:2.2rem">
-      <a class="btn btn--gold" href="#cotizar">Consultar disponibilidad</a>
+      <a class="btn btn--gold" href="#disponibilidad">Ver disponibilidad</a>
     </div>
   </div>
 </section>
+
+<!-- ============ CALENDARIO ============ -->
+<section class="section section--cream2" id="disponibilidad">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="ornament"></span>
+      <p class="section-head__eyebrow">Disponibilidad</p>
+      <h2>Mira qué fechas están libres</h2>
+      <p style="max-width:56ch;margin-inline:auto;color:var(--muted)">Consulta el calendario de cada espacio antes de escribirnos. Lo que aparece marcado ya está reservado.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="cal-tabs" role="tablist" aria-label="Espacios disponibles">
+        <button class="cal-tab" role="tab" type="button" data-cal="principal" aria-selected="true">Salón principal</button>
+        <button class="cal-tab" role="tab" type="button" data-cal="privado" aria-selected="false">Salón privado</button>
+        <button class="cal-tab" role="tab" type="button" data-cal="terraza" aria-selected="false">Terraza</button>
+      </div>
+
+      <div class="cal-frame" id="cal-frame" hidden>
+        <iframe id="cal-iframe" title="Calendario de disponibilidad" loading="lazy"></iframe>
+      </div>
+
+      <div class="cal-vacio" id="cal-vacio">
+        <p style="margin:0 0 1.2rem">Escríbenos y te confirmamos la disponibilidad de la fecha que tienes en mente.</p>
+        <a class="btn btn--gold" href="#consulta">Consultar una fecha</a>
+      </div>
+
+      <p class="cal-nota">¿Tu fecha aparece ocupada? Escríbenos igual: a veces se libera o podemos ofrecerte otro espacio.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+/* Calendarios de Google por espacio.
+   Para activarlos: crea un calendario público por salón en Google Calendar y
+   pega aquí su ID (Configuración del calendario → Integrar calendario → ID).
+   Mientras los ID estén vacíos, la página muestra el bloque de "consúltanos". */
+(function () {
+  var CALENDARIOS = {
+    principal: '',
+    privado:   '',
+    terraza:   ''
+  };
+  var ZONA = 'America/Santo_Domingo';
+  var frame = document.getElementById('cal-frame');
+  var vacio = document.getElementById('cal-vacio');
+  var iframe = document.getElementById('cal-iframe');
+  var tabs = [].slice.call(document.querySelectorAll('.cal-tab'));
+  if (!frame || !tabs.length) return;
+
+  function hayAlguno() {
+    for (var k in CALENDARIOS) { if (CALENDARIOS[k]) return true; }
+    return false;
+  }
+  function url(id) {
+    return 'https://calendar.google.com/calendar/embed?src=' + encodeURIComponent(id) +
+           '&ctz=' + encodeURIComponent(ZONA) +
+           '&mode=MONTH&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&bgcolor=%23ffffff';
+  }
+  function mostrar(clave) {
+    var id = CALENDARIOS[clave];
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.getAttribute('data-cal') === clave)); });
+    if (!id) { frame.hidden = true; vacio.hidden = false; return; }
+    vacio.hidden = true; frame.hidden = false;
+    iframe.setAttribute('src', url(id));
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { mostrar(t.getAttribute('data-cal')); });
+  });
+  if (hayAlguno()) { mostrar('principal'); }
+  else { document.querySelector('.cal-tabs').hidden = true; }
+})();
+</script>
 
 <!-- ============ CATERING ============ -->
 <section class="section section--cream2" id="catering">
@@ -501,6 +574,109 @@
 </section>
 
 <!-- ============ CTA ============ -->
+<!-- ============ CONSULTA ============ -->
+<section class="section" id="consulta">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="ornament"></span>
+      <p class="section-head__eyebrow">Atención personalizada</p>
+      <h2>Consulta tu evento con un agente</h2>
+      <p style="max-width:58ch;margin-inline:auto;color:var(--muted)">Cuéntanos qué tienes en mente y uno de nuestros agentes te arma una propuesta con salón, menú y decoración.</p>
+    </div>
+
+    <div class="consulta reveal">
+      <div>
+        <h3 style="margin-bottom:.8rem">Te respondemos por WhatsApp</h3>
+        <p style="color:var(--muted)">Llena los datos y al enviar se abre WhatsApp con tu consulta ya escrita. Así el agente tiene todo lo que necesita desde el primer mensaje y te cotiza más rápido.</p>
+        <p style="color:var(--muted);margin-bottom:0">También puedes llamarnos al <a href="tel:+18098567886" style="color:var(--gold-dark);font-weight:700">809-856-7886</a>, todos los días de 8:30 am a 11:00 pm.</p>
+      </div>
+
+      <form class="consulta__form" id="form-consulta" novalidate>
+        <div class="campo">
+          <label for="c-nombre">Tu nombre</label>
+          <input id="c-nombre" name="nombre" type="text" placeholder="Nombre y apellido" required>
+        </div>
+        <div class="campo">
+          <label for="c-tel">Tu número de contacto</label>
+          <input id="c-tel" name="telefono" type="tel" placeholder="809-000-0000" required>
+        </div>
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="c-fecha">Fecha del evento</label>
+            <input id="c-fecha" name="fecha" type="date">
+          </div>
+          <div class="campo">
+            <label for="c-personas">Personas</label>
+            <input id="c-personas" name="personas" type="number" min="1" placeholder="40">
+          </div>
+        </div>
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="c-tipo">Tipo de evento</label>
+            <select id="c-tipo" name="tipo">
+              <option>Cumpleaños</option>
+              <option>Evento corporativo</option>
+              <option>Boda</option>
+              <option>Almuerzo o cena familiar</option>
+              <option>Workshop</option>
+              <option>Catering fuera del local</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="c-espacio">Espacio</label>
+            <select id="c-espacio" name="espacio">
+              <option>Aún no lo sé</option>
+              <option>Salón principal (70)</option>
+              <option>Salón privado (20)</option>
+              <option>Terraza climatizada (60)</option>
+              <option>Catering fuera del local</option>
+            </select>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="c-nota">Algo más que debamos saber</label>
+          <textarea id="c-nota" name="nota" placeholder="Decoración, menú, horario…"></textarea>
+        </div>
+        <button class="btn btn--wa" type="submit">Enviar consulta por WhatsApp</button>
+        <p class="consulta__aviso">Se abrirá WhatsApp con tu consulta lista para enviar.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var f = document.getElementById('form-consulta');
+  if (!f) return;
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+    var nombre = v('c-nombre'), tel = v('c-tel');
+    if (!nombre || !tel) {
+      (!nombre ? document.getElementById('c-nombre') : document.getElementById('c-tel')).focus();
+      return;
+    }
+    var fecha = v('c-fecha');
+    if (fecha) {
+      var p = fecha.split('-');
+      if (p.length === 3) fecha = p[2] + '/' + p[1] + '/' + p[0];
+    }
+    var l = [];
+    l.push('Hola, quiero consultar un evento en Farah.');
+    l.push('');
+    l.push('Nombre: ' + nombre);
+    l.push('Contacto: ' + tel);
+    if (fecha) l.push('Fecha: ' + fecha);
+    if (v('c-personas')) l.push('Personas: ' + v('c-personas'));
+    l.push('Tipo de evento: ' + v('c-tipo'));
+    l.push('Espacio: ' + v('c-espacio'));
+    if (v('c-nota')) l.push('Nota: ' + v('c-nota'));
+    window.open('https://wa.me/18098567886?text=' + encodeURIComponent(l.join('\n')), '_blank', 'noopener');
+  });
+})();
+</script>
+
 <section class="section" id="cotizar">
   <div class="wrap">
     <div class="cta-band reveal">

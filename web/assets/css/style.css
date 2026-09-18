@@ -584,3 +584,50 @@ a.venue .venue__more { display: inline-block; margin-top: .7rem; font-size: .78r
 .cat-card li { font-size: .9rem; line-height: 1.45; color: var(--text); padding: .3rem 0 .3rem .95rem; position: relative; }
 .cat-card li::before { content: ""; position: absolute; left: 0; top: .82em; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
 .cat-card li + li { border-top: 1px solid rgba(0,0,0,.04); }
+
+/* ---------- Calendario de disponibilidad ---------- */
+/* [hidden] debe ganarle a cualquier display de estas reglas */
+[hidden] { display: none !important; }
+.cal-tabs { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-bottom: 1.6rem; }
+.cal-tab {
+  border: 1px solid var(--line); background: #fff; color: var(--muted);
+  border-radius: 999px; padding: .55rem 1.15rem; cursor: pointer;
+  font-family: var(--font-body); font-size: .76rem; font-weight: 800;
+  letter-spacing: .12em; text-transform: uppercase; transition: all .25s var(--ease);
+}
+.cal-tab:hover { border-color: var(--gold); color: var(--ink); }
+.cal-tab[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: var(--gold); }
+.cal-frame {
+  border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow); background: #fff; aspect-ratio: 4 / 3; max-width: 900px; margin-inline: auto;
+}
+.cal-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.cal-nota { text-align: center; font-size: .86rem; color: var(--muted); margin-top: 1.1rem; }
+.cal-vacio {
+  max-width: 620px; margin-inline: auto; text-align: center;
+  border: 1px dashed var(--gold); border-radius: var(--radius);
+  padding: 2.2rem 1.6rem; background: rgba(200,150,62,.06);
+}
+@media (max-width: 620px) { .cal-frame { aspect-ratio: 3 / 4; } }
+
+/* ---------- Consulta con un agente ---------- */
+.consulta { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(1.8rem, 4vw, 3.5rem); align-items: center; }
+.consulta__form { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.4rem, 3vw, 2rem); box-shadow: var(--shadow); }
+.campo { margin-bottom: 1rem; }
+.campo label { display: block; font-size: .74rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: .4rem; }
+.campo input, .campo select, .campo textarea {
+  width: 100%; font-family: var(--font-body); font-size: .95rem; color: var(--ink);
+  background: var(--cream); border: 1px solid var(--line); border-radius: 10px;
+  padding: .7rem .85rem; transition: border-color .2s ease, box-shadow .2s ease;
+}
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+  outline: 0; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,150,62,.18);
+}
+.campo textarea { min-height: 80px; resize: vertical; }
+.campo-fila { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+.consulta .btn { width: 100%; justify-content: center; margin-top: .4rem; }
+.consulta__aviso { font-size: .8rem; color: var(--muted); text-align: center; margin: .9rem 0 0; }
+@media (max-width: 860px) {
+  .consulta { grid-template-columns: 1fr; }
+  .campo-fila { grid-template-columns: 1fr; }
+}
