@@ -3,28 +3,148 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/inicio", "destination": "/", "permanent": true },
-    { "source": "/home", "destination": "/", "permanent": true },
-    { "source": "/menu", "destination": "/menu-san-isidro", "permanent": false },
-    { "source": "/menus", "destination": "/menu-san-isidro", "permanent": false },
-    { "source": "/ubicaciones", "destination": "/restaurante-santo-domingo", "permanent": true },
-    { "source": "/contacto", "destination": "/#contacto", "permanent": true },
-    { "source": "/reservas", "destination": "/#reservas", "permanent": true }
+    {
+      "source": "/inicio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/menu",
+      "destination": "/menu-san-isidro",
+      "permanent": false
+    },
+    {
+      "source": "/menus",
+      "destination": "/menu-san-isidro",
+      "permanent": false
+    },
+    {
+      "source": "/ubicaciones",
+      "destination": "/restaurante-santo-domingo",
+      "permanent": true
+    },
+    {
+      "source": "/contacto",
+      "destination": "/#contacto",
+      "permanent": true
+    },
+    {
+      "source": "/reservas",
+      "destination": "/#reservas",
+      "permanent": true
+    },
+    {
+      "source": "/web",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/web/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/farahrd-actualizacion",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/farahrd-actualizacion/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/farahrd-actualizacion_1",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/farahrd-actualizacion_1/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/farahrd-actualizacion_2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/farahrd-actualizacion_2/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/farah-subir-a-la-raiz",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/farah-subir-a-la-raiz/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    }
   ],
   "headers": [
     {
-      "source": "/assets/(.*)",
+      "source": "/assets/css/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/js/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/img/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/promos/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
       ]
     }
   ]
